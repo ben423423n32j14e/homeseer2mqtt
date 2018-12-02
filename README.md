@@ -19,6 +19,7 @@ msg.payload.label or msg.payload.value
 <BR>
 Import flow "Sample Control Device Flow" in Node-Red for a simple working example.
 
+<BR>
 <B><I>Receive device status updates via MQTT</I></B>
 <BR>
 <BR>
