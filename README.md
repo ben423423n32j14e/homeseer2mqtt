@@ -10,4 +10,4 @@ msg.payload.ref or msg.payload.name
 <BR>
 msg.payload.label or msg.payload.value
   
-Example: (eg msg.payload.name = "Office" and msg.payload.label = "On")
+<I>Example:</I> (eg msg.payload.name = "Office" and msg.payload.label = "On")
