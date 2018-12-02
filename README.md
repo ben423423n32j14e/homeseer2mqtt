@@ -15,6 +15,9 @@ msg.payload.ref or msg.payload.name
 msg.payload.label or msg.payload.value
   
 <I>Example:</I> (eg msg.payload.name = "Office" and msg.payload.label = "On")
+<BR>
+<BR>
+Import flow "Sample Control Device Flow" in Node-Red for a simple working example.
 
 <B><I>Receive device status updates via MQTT</I></B>
 <BR>
