@@ -51,4 +51,4 @@ Example showing homeseer/out MQTT output in Node-Red debug when a device updates
 <BR>
 <B><I>Notes:</I></B>
 <BR>
-* Expect this flow and HomeSeer to consume a lot of cpu. When enabled for me it's using about 3% of my dual 8 core xeon cpus which I find very acceptable.
+* Expect this flow and HomeSeer to consume a lot of cpu. When enabled for me it's using about 3% of my dual 8 core xeon cpus.
