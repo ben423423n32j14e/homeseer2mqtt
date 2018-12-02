@@ -1,1 +1,83 @@
-[{"id":"b642b9b6.6c4538","type":"mqtt out","z":"b40d5522.37e3e8","name":"","topic":"homeseer/in","qos":"","retain":"","broker":"5e06ebd0.e4e9d4","x":410,"y":480,"wires":[]},{"id":"8e1ce839.0152b8","type":"inject","z":"b40d5522.37e3e8","name":"Request","topic":"","payload":"","payloadType":"date","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":140,"y":480,"wires":[["336ca0ea.b6a62"]]},{"id":"336ca0ea.b6a62","type":"function","z":"b40d5522.37e3e8","name":"Logic","func":"var name = 'Office';\nvar label = 'On';\nmsg.payload = {}\nmsg.payload.name = name;\nmsg.payload.label = label;\nreturn msg;","outputs":1,"noerr":0,"x":270,"y":480,"wires":[["b642b9b6.6c4538"]]},{"id":"eda21091.0ab3a","type":"comment","z":"b40d5522.37e3e8","name":"Sample control a device","info":"","x":160,"y":440,"wires":[]},{"id":"5e06ebd0.e4e9d4","type":"mqtt-broker","z":"","name":"homeseer","broker":"192.168.0.5","port":"1883","clientid":"","usetls":false,"compatmode":true,"keepalive":"60","cleansession":true,"birthTopic":"","birthQos":"0","birthPayload":"","closeTopic":"","closeQos":"0","closePayload":"","willTopic":"","willQos":"0","willPayload":""}]
+[
+    {
+        "id": "7db043d0.2e2adc",
+        "type": "mqtt out",
+        "z": "b40d5522.37e3e8",
+        "name": "",
+        "topic": "homeseer/in",
+        "qos": "",
+        "retain": "",
+        "broker": "5e06ebd0.e4e9d4",
+        "x": 790,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "116070d7.8aa0ff",
+        "type": "inject",
+        "z": "b40d5522.37e3e8",
+        "name": "Request",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 520,
+        "y": 560,
+        "wires": [
+            [
+                "c3a191eb.693fc"
+            ]
+        ]
+    },
+    {
+        "id": "c3a191eb.693fc",
+        "type": "function",
+        "z": "b40d5522.37e3e8",
+        "name": "Logic",
+        "func": "var name = 'Office';\nvar label = 'On';\nmsg.payload = {}\nmsg.payload.name = name;\nmsg.payload.label = label;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 650,
+        "y": 560,
+        "wires": [
+            [
+                "7db043d0.2e2adc"
+            ]
+        ]
+    },
+    {
+        "id": "98ff203a.b451b",
+        "type": "comment",
+        "z": "b40d5522.37e3e8",
+        "name": "Sample control a device",
+        "info": "",
+        "x": 540,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "5e06ebd0.e4e9d4",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "Domoticz",
+        "broker": "192.168.0.5",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]
