@@ -6,13 +6,13 @@ Two way MQTT interface for HomeSeer via Node-Red.
 <BR>
 MQTT Topic: homeseer/in
 
-To control via value send either:
+To control via value send:
 <BR>
 msg.payload.ref
 <BR>
 msg.payload.value
   
-To control via label send either:
+To control via label send:
 <BR>
 msg.payload.ref
 <BR>
