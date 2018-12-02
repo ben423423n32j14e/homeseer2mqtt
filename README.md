@@ -5,6 +5,7 @@ HomeSeer MQTT interface via Node-Red.
 * Battery level is automatically added to the MQTT payload for each battery device (enhancement)
 * Control devices by name instead of ref (enhancement)
 
+<BR>
 <B><I>Control a HomeSeer device via MQTT:</I></B>
 <BR>
 <BR>
