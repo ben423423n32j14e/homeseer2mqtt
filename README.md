@@ -1,7 +1,7 @@
 # homeseer2mqtt
 Two way MQTT interface for HomeSeer via Node-Red.
 
-<B>Control device HomeSeer via MQTT</B>
+<B>Control HomeSeer device via MQTT</B>
 <BR>
 <BR>
 MQTT Topic: homeseer/in
