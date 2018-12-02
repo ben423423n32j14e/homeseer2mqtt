@@ -12,6 +12,7 @@ HomeSeer MQTT interface via Node-Red.
 1) Fill out the MQTT node settings (homeseer/in and homeseer/out)
 <BR>
 2) Correct the HomeSeer URL as per the screenshot below
+<BR>
 
 ![Screenshot](/images/setup.png)
 
