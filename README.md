@@ -8,12 +8,12 @@ MQTT Topic: homeseer/in
 
 To control via value send:
 <BR>
-msg.payload.ref OR msg.payload.name
+msg.payload.ref or msg.payload.name
 <BR>
 msg.payload.value
   
 To control via label send:
 <BR>
-msg.payload.ref OR msg.payload.name
+msg.payload.ref or msg.payload.name
 <BR>
 msg.payload.label
