@@ -15,3 +15,13 @@ msg.payload.ref or msg.payload.name
 msg.payload.label or msg.payload.value
   
 <I>Example:</I> (eg msg.payload.name = "Office" and msg.payload.label = "On")
+
+<B><I>Receive device status updates via MQTT</I></B>
+<BR>
+<BR>
+When a devices status changes it is automatically output to MQTT Topic: homeseer/out
+<BR>
+<BR>
+Example showing output when a device updates in Node-Red debug:
+<BR>
+![Screenshot](/images/examplenoderedoutput.JPG)
