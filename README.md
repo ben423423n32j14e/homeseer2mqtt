@@ -2,7 +2,7 @@
 HomeSeer MQTT interface via Node-Red.
 <BR>
 * Polls HomeSeers JSON interface identifying device status changes and relaying them to a MQTT channel (typically with less than 200ms delay), eg this level of delay is typically not noticable to humans.
-* Battery level is automatically added to the MQTT output for each battery device (enhancement)
+* Battery level is automatically added to the MQTT payload for each battery device (enhancement)
 * Control devices by name instead of ref (enhancement)
 
 <B><I>Control a HomeSeer device via MQTT:</I></B>
