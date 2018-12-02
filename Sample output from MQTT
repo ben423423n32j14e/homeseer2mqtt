@@ -1,0 +1,80 @@
+[
+    {
+        "id": "78a0f4ac.5d704c",
+        "type": "mqtt in",
+        "z": "b40d5522.37e3e8",
+        "name": "",
+        "topic": "homeseer/out",
+        "qos": "2",
+        "broker": "3437cea9.b22eb2",
+        "x": 270,
+        "y": 580,
+        "wires": [
+            [
+                "6e783486.e349fc"
+            ]
+        ]
+    },
+    {
+        "id": "6e783486.e349fc",
+        "type": "json",
+        "z": "b40d5522.37e3e8",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 410,
+        "y": 580,
+        "wires": [
+            [
+                "e45fbba5.7a2428"
+            ]
+        ]
+    },
+    {
+        "id": "e45fbba5.7a2428",
+        "type": "debug",
+        "z": "b40d5522.37e3e8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 550,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "901959a9.b24ef8",
+        "type": "comment",
+        "z": "b40d5522.37e3e8",
+        "name": "Sample MQTT Output from HomeSeer to Node-Red Debug",
+        "info": "",
+        "x": 410,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "3437cea9.b22eb2",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "Domoticz",
+        "broker": "domoticz.local",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]
