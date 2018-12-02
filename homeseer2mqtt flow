@@ -1,0 +1,267 @@
+[
+    {
+        "id": "fa1bb2ab.ddf3",
+        "type": "http request",
+        "z": "b40d5522.37e3e8",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "url": "http://192.168.0.5:88/JSON?request=getstatus",
+        "tls": "",
+        "x": 330,
+        "y": 200,
+        "wires": [
+            [
+                "47b3fb5f.10fa04",
+                "df9cce28.78aa2",
+                "c2167c04.31b8f"
+            ]
+        ]
+    },
+    {
+        "id": "f1a83eec.5d0e5",
+        "type": "inject",
+        "z": "b40d5522.37e3e8",
+        "name": "Initial Request",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 160,
+        "y": 200,
+        "wires": [
+            [
+                "fa1bb2ab.ddf3"
+            ]
+        ]
+    },
+    {
+        "id": "47b3fb5f.10fa04",
+        "type": "function",
+        "z": "b40d5522.37e3e8",
+        "name": "Logic",
+        "func": "// Variables\nvar homeseerdevices = JSON.parse(msg.payload);\n\n// Clear msg.payload\nmsg.payload = {}\n\nfor(var i =0; i<homeseerdevices.Devices.length;i++){\n    // Setup some variables\n    var prevchange = context.get('dev'+i);\n    var lastchange = homeseerdevices.Devices[i].last_change;\n    var ref = homeseerdevices.Devices[i].ref;\n    var name = homeseerdevices.Devices[i].name;\n    var value = homeseerdevices.Devices[i].value;\n    var device_type_string = homeseerdevices.Devices[i].device_type_string;\n    var status = homeseerdevices.Devices[i].status;\n    var status_image = homeseerdevices.Devices[i].status_image;\n    var associated_devices = homeseerdevices.Devices[i].associated_devices[0];\n    var location = homeseerdevices.Devices[i].location;\n    var location2 = homeseerdevices.Devices[i].location2;\n    \n    // Check if the device has a battery and identify the root device\n    if (name.includes(\"Battery\") || device_type_string.includes(\"Battery\") || status_image.includes(\"battery\") ){\n        context.set('batt'+associated_devices,value);\n    }\n    \n    // Check if device has new data\n    if (typeof prevchange == 'undefined' || prevchange === null){\n        var prevchange = lastchange;\n        context.set('dev'+i,lastchange);\n    }\n    // Output new data\n    if (prevchange != lastchange) {\n        msg.payload.ref = ref;\n        msg.payload.name = name;\n        msg.payload.value = value;\n        msg.payload.status = status;\n        msg.payload.location = location;\n        msg.payload.location2 = location2;\n        // Check if should attach battery\n        var batt = context.get('batt'+associated_devices);\n        if (typeof batt !== 'undefined' && batt !== null && batt >= 1){ msg.payload.battery = batt;}\n        context.set('dev'+i,lastchange);\n        return msg;\n    }\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470,
+        "y": 200,
+        "wires": [
+            [
+                "540d896.bb47678"
+            ]
+        ]
+    },
+    {
+        "id": "df9cce28.78aa2",
+        "type": "function",
+        "z": "b40d5522.37e3e8",
+        "name": "Clear",
+        "func": "msg.payload = {}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 130,
+        "y": 240,
+        "wires": [
+            [
+                "27c0adf9.da2272"
+            ]
+        ]
+    },
+    {
+        "id": "27c0adf9.da2272",
+        "type": "delay",
+        "z": "b40d5522.37e3e8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "100",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 270,
+        "y": 240,
+        "wires": [
+            [
+                "fa1bb2ab.ddf3"
+            ]
+        ]
+    },
+    {
+        "id": "540d896.bb47678",
+        "type": "mqtt out",
+        "z": "b40d5522.37e3e8",
+        "name": "",
+        "topic": "homeseer/out",
+        "qos": "",
+        "retain": "",
+        "broker": "ed176643.df6c68",
+        "x": 620,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "8fea3ae5.311ed8",
+        "type": "comment",
+        "z": "b40d5522.37e3e8",
+        "name": "Output HomeSeer device status to MQTT",
+        "info": "",
+        "x": 220,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "837643ba.25f9f",
+        "type": "comment",
+        "z": "b40d5522.37e3e8",
+        "name": "Control HomeSeer devices via MQTT",
+        "info": "",
+        "x": 210,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "477d75c1.1152ac",
+        "type": "mqtt in",
+        "z": "b40d5522.37e3e8",
+        "name": "",
+        "topic": "homeseer/in",
+        "qos": "2",
+        "broker": "ea7fe421.9a9588",
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "d1a0ba02.c4c808"
+            ]
+        ]
+    },
+    {
+        "id": "d1a0ba02.c4c808",
+        "type": "function",
+        "z": "b40d5522.37e3e8",
+        "name": "Logic",
+        "func": "// Variables\nvar homeseerjson = JSON.parse(global.get('homeseerjson'));\nvar mqtt = JSON.parse(msg.payload);\nvar ref = mqtt.ref;\nvar value = mqtt.value;\nvar label = mqtt.label;\nvar name = mqtt.name;\n\n// Convert name to ref (if applicable)\nif (typeof name !== 'undefined' && name !== null){\n    for (i = 0; i < homeseerjson.Devices.length; i=i+1) {\n        var hsname = (homeseerjson.Devices[i].name);\n        if (name == hsname){\n            var ref = homeseerjson.Devices[i].ref;\n        }\n    }\n}\n\n// Control by label\nif (typeof label !== 'undefined' && label !== null){\nmsg.url = ('http://192.168.0.5:88/JSON?request=controldevicebylabel&ref='+ref+'&label='+label);\n}\n\n// Control by value\nif (typeof value !== 'undefined' && value !== null){\nmsg.url = ('http://192.168.0.5:88/JSON?request=controldevicebyvalue&ref='+ref+'&value='+value);\n}\n\n// Send message integrity check (did we get a ref?)\nif (typeof ref !== 'undefined' && ref !== null){\nreturn msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 270,
+        "y": 80,
+        "wires": [
+            [
+                "542b14f0.193e7c"
+            ]
+        ]
+    },
+    {
+        "id": "542b14f0.193e7c",
+        "type": "http request",
+        "z": "b40d5522.37e3e8",
+        "name": "Make HTTP Request",
+        "method": "GET",
+        "ret": "txt",
+        "url": "",
+        "tls": "",
+        "x": 440,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c2167c04.31b8f",
+        "type": "delay",
+        "z": "b40d5522.37e3e8",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "30",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 140,
+        "y": 360,
+        "wires": [
+            [
+                "178a0427.f0128c"
+            ]
+        ]
+    },
+    {
+        "id": "dc8dd5cc.c7ff28",
+        "type": "comment",
+        "z": "b40d5522.37e3e8",
+        "name": "Globally store all HomeSeer devices on interval (used for name instead of ref control feature)",
+        "info": "",
+        "x": 380,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "178a0427.f0128c",
+        "type": "function",
+        "z": "b40d5522.37e3e8",
+        "name": "Store Globally",
+        "func": "global.set('homeseerjson',msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 320,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ed176643.df6c68",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "Domoticz",
+        "broker": "domoticz.local",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "ea7fe421.9a9588",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "Domoticz",
+        "broker": "domoticz.local",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]
