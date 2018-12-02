@@ -1,7 +1,7 @@
 # homeseer2mqtt
 Two way MQTT interface for HomeSeer via Node-Red.
 
-# Control device HomeSeer via MQTT
+* Control device HomeSeer via MQTT
 MQTT Topic: homeseer/in
 
 * To control via value send:
