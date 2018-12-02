@@ -30,4 +30,5 @@ When a devices status changes it is automatically output to MQTT Topic: homeseer
 Example showing homeseer/out MQTT output in Node-Red debug when a device updates:
 <BR>
 <BR>
+  
 ![Screenshot](/images/examplenoderedoutput.JPG)
