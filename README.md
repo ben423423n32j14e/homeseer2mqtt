@@ -22,7 +22,7 @@ msg.payload.label or msg.payload.value
 When a devices status changes it is automatically output to MQTT Topic: homeseer/out
 <BR>
 <BR>
-Example showing output when a device updates in Node-Red debug:
+Example showing homeseer/out MQTT output in Node-Red debug when a device updates:
 <BR>
 <BR>
 ![Screenshot](/images/examplenoderedoutput.JPG)
