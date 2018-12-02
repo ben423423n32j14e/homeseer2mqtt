@@ -6,13 +6,13 @@ HomeSeer MQTT interface via Node-Red.
 <BR>
 MQTT Topic: homeseer/in
 
-To control via value send:
+To control via value send: (eg msg.payload.name = "Office" and msg.payload.value = "50")
 <BR>
 msg.payload.ref or msg.payload.name
 <BR>
 msg.payload.value
   
-To control via label send:
+To control via label send: (eg msg.payload.name = "Office" and msg.payload.label = "On")
 <BR>
 msg.payload.ref or msg.payload.name
 <BR>
