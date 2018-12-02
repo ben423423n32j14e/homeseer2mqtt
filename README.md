@@ -1,5 +1,5 @@
 # homeseer2mqtt
-HomeSeer MQTT interface via Node-Red.
+HomeSeer MQTT interface via Node-Red, control devices and receive device updates.
 
 <B><I>Control a HomeSeer device via MQTT:</I></B>
 <BR>
