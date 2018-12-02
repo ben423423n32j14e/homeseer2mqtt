@@ -11,7 +11,7 @@ Creates an MQTT interface for HomeSeer via Node-Red.
 <BR>
 1) Import the "homeseer2mqtt flow" into Node-Red
 <BR>
-2) Fill out the MQTT node settings (homeseer/in and homeseer/out)
+2) Fill your MQTT server settings in the (homeseer/in and homeseer/out) nodes.
 <BR>
 3) Correct the HomeSeer URL as per the screenshot below:
 <BR>
