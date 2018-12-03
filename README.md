@@ -1,7 +1,7 @@
 # homeseer2mqtt
 Creates an MQTT interface for HomeSeer via Node-Red.
 <BR>
-* Polls HomeSeers JSON interface identifying device status changes and relaying them to a MQTT channel (typically with less than 200ms delay), eg this level of delay is typically not noticable to humans.
+* Polls HomeSeers JSON interface identifying device status changes and relaying them to a MQTT topic (typically with less than 200ms delay), eg this level of delay is typically not noticable to humans.
 * Battery level is automatically added to the MQTT payload for each battery device (enhancement)
 * Control devices by name instead of ref (enhancement)
 
