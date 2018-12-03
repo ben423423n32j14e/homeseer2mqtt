@@ -54,4 +54,4 @@ Example showing homeseer/out MQTT output in Node-Red debug when a device updates
 * Expect this flow and HomeSeer to consume a lot of cpu. When enabled for me with about 30 Z-Wave nodes in HomeSeer it's using about 3% of my dual 8 core xeon cpus at the default "delay 100ms". It's possible to roughly halve the cpu utilization by increasing the delay node from 100ms to 200ms, you may need to do this or even more if you try to use this solution with eg a Raspberry Pi. Even 200ms though is typically not noticable for a human when turning a light on or off (I personally start to notice a very small delay when it is set at 400ms).
 <BR>
 <BR>
-* This solution is in no way affiliated with HomeSeer and is licensed under the GNU GENERAL PUBLIC LICENSE Version 3 (LICENSE](/LICENSE) file).
+* This solution is in no way affiliated with HomeSeer and is licensed under the GNU GENERAL PUBLIC LICENSE Version 3 [LICENSE](/LICENSE).
